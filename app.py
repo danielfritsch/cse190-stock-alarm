@@ -9,11 +9,11 @@ app = Flask(__name__)
 # def hello_world():
 #     return "<p>Hello, World!</p>"
 
-@app.route("/percent-change/<ticker>")
+@app.route("/percent_change/<ticker>")
 def percent_change(ticker):
 	quote = finnhub_client.quote(ticker)
-	return ((quote['c'] - quote['o']) / quote['o']) * 100
+	return { 'percent_change': ((quote['c'] - quote['o']) / quote['o']) * 100}
 
-@app.route("/get-range/<ticker>/<sensitivity>")
+@app.route("/get_sensitivity_range/<ticker>/<sensitivity>")
 def get_sensitivity_range(ticker, sensitivity):
 	pass
