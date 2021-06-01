@@ -6,19 +6,38 @@ const fetch = require("node-fetch");
 function App() {
   var ticker;
   var sens;
+  var range;
 
   function handleClick(tick) {
     ticker = tick;
+    console.log(ticker);
   }
 
   function handleSens(sen) {
     sens = sen;
+    console.log(sens);
+  }
+
+  const getRange = (tic, sen) => {
+    fetch('http://127.0.0.1:5000/get_sensitivity_range/' + tic + '/' + sen,
+      {
+        mode: 'cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+      .then(response => response.text())
+      .then(data => console.log(data));
   }
 
   function handleDone() {
-
+    range = getRange(ticker, sens);
+    console.log(range)
   }
 
+  /**
+   * 
+   */
   return (
     <div className="App" style={{ backgroundColor: '#d7f8ff', height: 1000 }}>
       <div style={styles.centerDiv}>
@@ -50,8 +69,8 @@ function App() {
         <button class='tck_button' id='FB' style={{ width: 130 }} onClick={() => handleClick("FB")}>
           FB
 					</button>
-        <button class='tck_button' id='AMD' style={{ width: 130 }} onClick={() => handleClick("AMD")}>
-          AMD
+        <button class='tck_button' id='PANW' style={{ width: 130 }} onClick={() => handleClick("PANW")}>
+          PANW
 					</button>
         <button class='tck_button' id='NFLX' style={{ width: 130 }} onClick={() => handleClick("NFLX")}>
           NFLX
