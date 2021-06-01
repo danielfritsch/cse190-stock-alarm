@@ -16,4 +16,4 @@ def percent_change(ticker):
 
 @app.route("/get_sensitivity_range/<ticker>/<sensitivity>")
 def get_sensitivity_range(ticker, sensitivity):
-	pass
+	return { 'range': [-1.5, 1.5] }
