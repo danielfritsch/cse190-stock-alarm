@@ -1,13 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 
+const fetch = require("node-fetch");
+
 function App() {
-  var tickers = [];
+  var ticker;
+  var sens;
 
   function handleClick(tick) {
-    tickers.push(tick);
+    ticker = tick;
+  }
 
-    for (var i = 0; i < tickers.length; i += 1) console.log(tickers[i]);
+  function handleSens(sen) {
+    sens = sen;
+  }
+
+  function handleDone() {
+
   }
 
   return (
@@ -56,14 +65,22 @@ function App() {
 
       <div style={styles.centerDiv}>
         <label>Select Sensitivity &nbsp;</label>
-        <button class='sen_button' id='AAPL' style={{ width: 130 }} onClick={() => handleClick("LOW")}>
+        <button class='sen_button' id='LOW' style={{ width: 130 }} onClick={() => handleSens("LOW")}>
           LOW
 					</button>
-        <button class='sen_button' id='TSLA' style={{ width: 130 }} onClick={() => handleClick("MEDIUM")}>
+        <button class='sen_button' id='MEDIUM' style={{ width: 130 }} onClick={() => handleSens("MEDIUM")}>
           MEDIUM
 					</button>
-        <button class='sen_button' id='SQ' style={{ width: 130 }} onClick={() => handleClick("HIGH")}>
+        <button class='sen_button' id='HIGH' style={{ width: 130 }} onClick={() => handleSens("HIGH")}>
           HIGH
+          </button>
+      </div>
+
+      <br />
+
+      <div style={styles.centerDiv}>
+        <button class='DONE' style={{ width: 130 }} onClick={() => handleDone()}>
+          DONE
           </button>
       </div>
     </div>
