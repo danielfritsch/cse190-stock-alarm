@@ -11,6 +11,8 @@ pip install flask
 
 pip install finnhub-python
 
+pip install -U flask-cors
+
 export FLASK_APP=app
 
 flask run
