@@ -37,18 +37,35 @@ function App() {
   }
 
   async function handleDone() {
+    alert("Thank you! Another alert will display when selected ticker has moved at selected sensitivity level");
     const range_response = await getRange(ticker, sens);
     let range = await range_response.json();
     range = range['range'];
+    console.log(range);
 
+    let percent_change = 0;
     while (true) {
-      const percent_response = await getCurrentPercentChange(ticker);
-      let percent_change = await percent_response.json();
-      percent_change = percent_change['percent_change']
+      percent_change = percent_change + 0.5;
+      sleep(10000);
+      console.log(percent_change);
+
+      // const percent_response = await getCurrentPercentChange(ticker);
+      // let percent_change = await percent_response.json();
+      // percent_change = percent_change['percent_change']
+      // console.log(percent_change)
 
       if (percent_change <= range[0]) break;
       else if (percent_change >= range[1]) break;
     }
+    alert(ticker + "'s activity has moved outside of your selected sensitivity level: " + sens);
+  }
+
+  function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
   }
 
   /**

@@ -12,7 +12,7 @@ import sys
 
 warnings.filterwarnings("ignore")
 
-finnhub_client = finnhub.Client(api_key="c2fdbl2ad3ien4444lpg")
+finnhub_client = finnhub.Client(api_key="c2rg2s2ad3iets16u47g")
 
 app = Flask(__name__)
 CORS(app)
@@ -28,7 +28,6 @@ def get_sensitivity_range(ticker, sensitivity):
 
 	final_range = [-1 * medium_range, medium_range]
 	if sensitivity == "LOW":
-		print("YO YO")
 		sens_adjusted_range = medium_range * 2
 		final_range = [-1 * sens_adjusted_range, sens_adjusted_range]
 	elif sensitivity == "HIGH":
