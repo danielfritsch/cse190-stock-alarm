@@ -81,34 +81,34 @@ function App() {
 
       <div style={styles.centerDiv}>
         <label>Select Tickers &nbsp;</label>
-        <button class='tck_button' id='AAPL' style={{ width: 130 }} onClick={() => handleClick("AAPL")}>
+        <button className='tck_button' id='AAPL' style={{ width: 130 }} onClick={() => handleClick("AAPL")}>
           AAPL
 					</button>
-        <button class='tck_button' id='TSLA' style={{ width: 130 }} onClick={() => handleClick("TSLA")}>
+        <button className='tck_button' id='TSLA' style={{ width: 130 }} onClick={() => handleClick("TSLA")}>
           TSLA
 					</button>
-        <button class='tck_button' id='SQ' style={{ width: 130 }} onClick={() => handleClick("SQ")}>
+        <button className='tck_button' id='SQ' style={{ width: 130 }} onClick={() => handleClick("SQ")}>
           SQ
 					</button>
-        <button class='tck_button' id='AMZN' style={{ width: 130 }} onClick={() => handleClick("AMZN")}>
+        <button className='tck_button' id='AMZN' style={{ width: 130 }} onClick={() => handleClick("AMZN")}>
           AMZN
 					</button>
-        <button class='tck_button' id='MSFT' style={{ width: 130 }} onClick={() => handleClick("MSFT")}>
+        <button className='tck_button' id='MSFT' style={{ width: 130 }} onClick={() => handleClick("MSFT")}>
           MSFT
 					</button>
-        <button class='tck_button' id='BABA' style={{ width: 130 }} onClick={() => handleClick("BABA")}>
+        <button className='tck_button' id='BABA' style={{ width: 130 }} onClick={() => handleClick("BABA")}>
           BABA
 					</button>
-        <button class='tck_button' id='FB' style={{ width: 130 }} onClick={() => handleClick("FB")}>
+        <button className='tck_button' id='FB' style={{ width: 130 }} onClick={() => handleClick("FB")}>
           FB
 					</button>
-        <button class='tck_button' id='PANW' style={{ width: 130 }} onClick={() => handleClick("PANW")}>
+        <button className='tck_button' id='PANW' style={{ width: 130 }} onClick={() => handleClick("PANW")}>
           PANW
 					</button>
-        <button class='tck_button' id='NFLX' style={{ width: 130 }} onClick={() => handleClick("NFLX")}>
+        <button className='tck_button' id='NFLX' style={{ width: 130 }} onClick={() => handleClick("NFLX")}>
           NFLX
 					</button>
-        <button class='tck_button' id='NVDA' style={{ width: 130 }} onClick={() => handleClick("NVDA")}>
+        <button className='tck_button' id='NVDA' style={{ width: 130 }} onClick={() => handleClick("NVDA")}>
           NVDA
 					</button>
       </div>
@@ -117,13 +117,13 @@ function App() {
 
       <div style={styles.centerDiv}>
         <label>Select Sensitivity &nbsp;</label>
-        <button class='sen_button' id='LOW' style={{ width: 130 }} onClick={() => handleSens("LOW")}>
+        <button className='sen_button' id='LOW' style={{ width: 130 }} onClick={() => handleSens("LOW")}>
           LOW
 					</button>
-        <button class='sen_button' id='MEDIUM' style={{ width: 130 }} onClick={() => handleSens("MEDIUM")}>
+        <button className='sen_button' id='MEDIUM' style={{ width: 130 }} onClick={() => handleSens("MEDIUM")}>
           MEDIUM
 					</button>
-        <button class='sen_button' id='HIGH' style={{ width: 130 }} onClick={() => handleSens("HIGH")}>
+        <button className='sen_button' id='HIGH' style={{ width: 130 }} onClick={() => handleSens("HIGH")}>
           HIGH
           </button>
       </div>
@@ -131,7 +131,7 @@ function App() {
       <br />
 
       <div style={styles.centerDiv}>
-        <button class='DONE' style={{ width: 130 }} onClick={() => handleDone()}>
+        <button className='DONE' style={styles.allButton} onClick={() => handleDone()}>
           DONE
           </button>
       </div>
