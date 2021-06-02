@@ -19,13 +19,10 @@ function App() {
   }
 
   const getRange = (tic, sen) => {
-    fetch('http://127.0.0.1:5000/get_sensitivity_range/' + tic + '/' + sen,
-      {
-        mode: 'cors',
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
+    fetch('http://127.0.0.1:5000/get_sensitivity_range/' + tic + '/' + sen, {
+      method: 'get',
+      mode: 'cors'
+    })
       .then(response => response.text())
       .then(data => console.log(data));
   }
