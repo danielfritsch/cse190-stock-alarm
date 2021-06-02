@@ -18,18 +18,37 @@ function App() {
     console.log(sens);
   }
 
-  const getRange = (tic, sen) => {
-    fetch('http://127.0.0.1:5000/get_sensitivity_range/' + tic + '/' + sen, {
+  async function getCurrentPercentChange(ticker) {
+    const response = await fetch('http://127.0.0.1:5000/percent_change/' + ticker, {
       method: 'get',
-      mode: 'cors'
-    })
-      .then(response => response.text())
-      .then(data => console.log(data));
+      mode: 'cors',
+    });
+
+    return response;
   }
 
-  function handleDone() {
-    range = getRange(ticker, sens);
-    console.log(range)
+  async function getRange(tic, sen) {
+    const response = await fetch('http://127.0.0.1:5000/get_sensitivity_range/' + tic + '/' + sen, {
+      method: 'get',
+      mode: 'cors'
+    });
+
+    return response;
+  }
+
+  async function handleDone() {
+    const range_response = await getRange(ticker, sens);
+    let range = await range_response.json();
+    range = range['range'];
+
+    while (true) {
+      const percent_response = await getCurrentPercentChange(ticker);
+      let percent_change = await percent_response.json();
+      percent_change = percent_change['percent_change']
+
+      if (percent_change <= range[0]) break;
+      else if (percent_change >= range[1]) break;
+    }
   }
 
   /**
