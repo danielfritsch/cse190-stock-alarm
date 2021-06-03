@@ -10,12 +10,12 @@ function App() {
 
   function handleClick(tick) {
     ticker = tick;
-    console.log(ticker);
+    alert("You selected ticker: " + ticker);
   }
 
   function handleSens(sen) {
     sens = sen;
-    console.log(sens);
+    alert("You selected sensitivity level: " + sens);
   }
 
   async function getCurrentPercentChange(ticker) {
@@ -37,22 +37,24 @@ function App() {
   }
 
   async function handleDone() {
-    alert("Thank you! Another alert will display when selected ticker has moved at selected sensitivity level");
+    alert("Thank you! Another alert will display when selected ticker has moved beyond your selected sensitivity level");
     const range_response = await getRange(ticker, sens);
     let range = await range_response.json();
     range = range['range'];
-    console.log(range);
+    console.log("This is the range the stock is expected to move in-between at a " + sens + " sensitivity level: " + range);
 
     let percent_change = 0;
     while (true) {
-      percent_change = percent_change + 0.5;
-      sleep(10000);
-      console.log(percent_change);
+      // NOTE: uncomment the next three lines to simulate a stock's movement
+      // percent_change = percent_change + 0.25;
+      // sleep(3000);
+      // console.log("CURRENT PERCENT CHANGE: " + percent_change);
 
-      // const percent_response = await getCurrentPercentChange(ticker);
-      // let percent_change = await percent_response.json();
-      // percent_change = percent_change['percent_change']
-      // console.log(percent_change)
+      // NOTE: comment out the next four lines to simulate a stock's movement above
+      const percent_response = await getCurrentPercentChange(ticker);
+      percent_change = await percent_response.json();
+      percent_change = percent_change['percent_change']
+      console.log(percent_change)
 
       if (percent_change <= range[0]) break;
       else if (percent_change >= range[1]) break;
@@ -73,11 +75,15 @@ function App() {
    */
   return (
     <div className="App" style={{ backgroundColor: '#d7f8ff', height: 1000 }}>
+      <br/>
       <div style={styles.centerDiv}>
         <h1 style={{ height: 10 }}>Stock Sensitivity Alarm Clock</h1>
       </div>
 
       <br />
+      <br/>
+      <br/>
+      <br/>
 
       <div style={styles.centerDiv}>
         <label>Select Tickers &nbsp;</label>
@@ -114,6 +120,7 @@ function App() {
       </div>
 
       <br />
+      <br/>
 
       <div style={styles.centerDiv}>
         <label>Select Sensitivity &nbsp;</label>
@@ -130,6 +137,9 @@ function App() {
 
       <br />
 
+      <br/>
+      <br/>
+      <br/>
       <div style={styles.centerDiv}>
         <button class='DONE' style={{ width: 130 }} onClick={() => handleDone()}>
           DONE
